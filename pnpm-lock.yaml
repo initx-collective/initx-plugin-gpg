@@ -9,10 +9,10 @@ importers:
   .:
     dependencies:
       '@initx-plugin/core':
-        specifier: ^0.0.15
+        specifier: latest
         version: 0.0.15
       '@initx-plugin/utils':
-        specifier: ^0.0.15
+        specifier: latest
         version: 0.0.15(@types/node@22.8.2)
       fs-extra:
         specifier: ^11.2.0
