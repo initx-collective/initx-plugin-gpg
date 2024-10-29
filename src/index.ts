@@ -97,7 +97,9 @@ export default class GpgHandler extends InitxHandler {
     const privateKeyPath = path.join(process.cwd(), privateKeyName)
 
     if (fs.existsSync(publicKeyPath) || fs.existsSync(privateKeyPath)) {
-      const overwrite = await inquirer.confirm(`Key file "${publicKeyName}" or "${privateKeyName}" already exists, overwrite?`)
+      const overwrite = await inquirer.confirm(
+        `Key file "${publicKeyName}" or "${privateKeyName}" already exists, overwrite?`
+      )
 
       if (!overwrite) {
         return
