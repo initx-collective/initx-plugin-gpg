@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       '@initx-plugin/core':
-        specifier: ^0.0.14
-        version: 0.0.14
+        specifier: ^0.0.15
+        version: 0.0.15
       '@initx-plugin/utils':
-        specifier: ^0.0.14
-        version: 0.0.14(@types/node@22.8.2)
+        specifier: ^0.0.15
+        version: 0.0.15(@types/node@22.8.2)
       fs-extra:
         specifier: ^11.2.0
         version: 11.2.0
@@ -813,14 +813,14 @@ packages:
   '@imba97/eslint-config@0.0.4':
     resolution: {integrity: sha512-wkUUnmrtZrUcZotzg2WCPvduWIIfZ/A/Ao6pRH028MmPXQL+CVSRM97ZtCkJDAPvBAp1599Y3M4BugZcNMnKoQ==}
 
-  '@initx-plugin/core@0.0.14':
-    resolution: {integrity: sha512-5kvyKAvmKRHbXRUE+9W7ahNEx+3DYM/BmEu5ewFPzKHa3LXx3K0tDN/9wNYflpo1O1+eqcCtLTthMlQFQM26Hg==}
+  '@initx-plugin/core@0.0.15':
+    resolution: {integrity: sha512-2n20WNVGbA3PryrRG+lAe/Nv13Kr9JuYUUMeGH96iUDb+g3eJSMuI2LGd3/+1/dBCYThHzhfdtxR86q2nQRZ+Q==}
 
   '@initx-plugin/utils@0.0.11':
     resolution: {integrity: sha512-0c55RQqwvnVPjHZsW1/dofLeJ6jPjlBKjmWWXlA1X+9uof8Qi/DEG6pCV/lBT7C0zass6kI+Jt4LF8gtRp03Vg==}
 
-  '@initx-plugin/utils@0.0.14':
-    resolution: {integrity: sha512-vuM/MC8F5cDaAjLBVtMzslNCOzz/bZgZJrIsV+rlzYiBYUZo3sfzPnJLN1Tanhgz5l4jvrrXLu7W/KKtBVL3pA==}
+  '@initx-plugin/utils@0.0.15':
+    resolution: {integrity: sha512-Xr8UNKd69Ca6W4eYFtB9hOmHj4e4UfrPYYv6LDYQpn6tLjfdiX6SkwUhuh55jsE5+WtH1iv7r1fLYRfB5D2XBA==}
 
   '@inquirer/checkbox@4.0.1':
     resolution: {integrity: sha512-ehJjmNPdguajc1hStvjN7DJNVjwG5LC1mgGMGFjCmdkn2fxB2GtULftMnlaqNmvMdPpqdaSoOFpl86VkLtG4pQ==}
@@ -3793,7 +3793,7 @@ snapshots:
       - typescript
       - vitest
 
-  '@initx-plugin/core@0.0.14':
+  '@initx-plugin/core@0.0.15':
     dependencies:
       '@initx-plugin/utils': 0.0.11
       fs-extra: 11.2.0
@@ -3807,7 +3807,7 @@ snapshots:
       picocolors: 1.1.1
       which: 5.0.0
 
-  '@initx-plugin/utils@0.0.14(@types/node@22.8.2)':
+  '@initx-plugin/utils@0.0.15(@types/node@22.8.2)':
     dependencies:
       execa: 9.5.0
       inquirer: 12.0.1(@types/node@22.8.2)
