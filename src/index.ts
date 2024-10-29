@@ -1,9 +1,8 @@
 import path from 'node:path'
-import inquirer from 'inquirer'
 import { existsSync, readdirSync, unlinkSync } from 'fs-extra'
 
 import { type InitxCtx, InitxHandler } from '@initx-plugin/core'
-import { c, gpgList, log } from '@initx-plugin/utils'
+import { c, gpgList, inquirer, log } from '@initx-plugin/utils'
 
 export default class GpgHandler extends InitxHandler {
   matchers = {
@@ -65,19 +64,10 @@ export default class GpgHandler extends InitxHandler {
       return firstKey.key
     }
 
-    const { key } = await inquirer.prompt([
-      {
-        name: 'key',
-        type: 'list',
-        message: 'Select a GPG key to export',
-        choices: list.map(gpg => ({
-          name: `${gpg.name} <${gpg.email}> [${gpg.key}]`,
-          value: gpg.key
-        }))
-      }
-    ])
-
-    return key
+    return await inquirer.select('Select a GPG key to export', list.map(gpg => ({
+      name: `${gpg.name} <${gpg.email}> [${gpg.key}]`,
+      value: gpg.key
+    })))
   }
 
   async importKey() {
@@ -107,12 +97,7 @@ export default class GpgHandler extends InitxHandler {
     const privateKeyPath = path.join(process.cwd(), privateKeyName)
 
     if (existsSync(publicKeyPath) || existsSync(privateKeyPath)) {
-      const { overwrite } = await inquirer.prompt([{
-        type: 'confirm',
-        name: 'overwrite',
-        default: false,
-        message: `Key file "${publicKeyName}" or "${privateKeyName}" already exists, overwrite?`
-      }])
+      const overwrite = await inquirer.confirm(`Key file "${publicKeyName}" or "${privateKeyName}" already exists, overwrite?`)
 
       if (!overwrite) {
         return
@@ -142,12 +127,9 @@ export default class GpgHandler extends InitxHandler {
   async deleteKey(key: string, deleteType?: string) {
     const hasDeleteType = !!(deleteType && ~['public', 'private'].indexOf(deleteType))
 
-    const { confirm } = await inquirer.prompt([{
-      type: 'confirm',
-      name: 'confirm',
-      default: false,
-      message: `Are you sure you want to delete the${hasDeleteType ? ` ${deleteType}` : ''} key "${key}"?`
-    }])
+    const confirm = await inquirer.confirm(
+      `Are you sure you want to delete the${hasDeleteType ? ` ${deleteType}` : ''} key "${key}"?`
+    )
 
     if (!confirm) {
       return
