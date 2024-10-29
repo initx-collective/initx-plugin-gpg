@@ -1,5 +1,5 @@
 import path from 'node:path'
-import { existsSync, readdirSync, unlinkSync } from 'fs-extra'
+import fs from 'fs-extra'
 
 import { type InitxCtx, InitxHandler } from '@initx-plugin/core'
 import { c, gpgList, inquirer, log } from '@initx-plugin/utils'
@@ -71,7 +71,7 @@ export default class GpgHandler extends InitxHandler {
   }
 
   async importKey() {
-    const dir = readdirSync(process.cwd())
+    const dir = fs.readdirSync(process.cwd())
     const publicKeys = dir.filter(file => file.endsWith('public.key'))
     const privateKeys = dir.filter(file => file.endsWith('private.key'))
 
@@ -96,7 +96,7 @@ export default class GpgHandler extends InitxHandler {
     const publicKeyPath = path.join(process.cwd(), publicKeyName)
     const privateKeyPath = path.join(process.cwd(), privateKeyName)
 
-    if (existsSync(publicKeyPath) || existsSync(privateKeyPath)) {
+    if (fs.existsSync(publicKeyPath) || fs.existsSync(privateKeyPath)) {
       const overwrite = await inquirer.confirm(`Key file "${publicKeyName}" or "${privateKeyName}" already exists, overwrite?`)
 
       if (!overwrite) {
@@ -104,19 +104,19 @@ export default class GpgHandler extends InitxHandler {
       }
 
       // remove existing key files
-      if (existsSync(publicKeyPath)) {
-        unlinkSync(publicKeyPath)
+      if (fs.existsSync(publicKeyPath)) {
+        fs.unlinkSync(publicKeyPath)
       }
 
-      if (existsSync(privateKeyPath)) {
-        unlinkSync(privateKeyPath)
+      if (fs.existsSync(privateKeyPath)) {
+        fs.unlinkSync(privateKeyPath)
       }
     }
 
     await c('gpg', ['--armor', '--output', publicKeyPath, '--export', key])
     await c('gpg', ['--armor', '--output', privateKeyPath, '--export-secret-keys', key])
 
-    if (!existsSync(privateKeyPath) || !existsSync(publicKeyPath)) {
+    if (!fs.existsSync(privateKeyPath) || !fs.existsSync(publicKeyPath)) {
       log.error('Error exporting GPG keys')
       return
     }
