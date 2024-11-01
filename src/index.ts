@@ -1,3 +1,4 @@
+import process from 'node:process'
 import path from 'node:path'
 import fs from 'fs-extra'
 
@@ -13,7 +14,7 @@ export default class GpgHandler extends InitxHandler {
   async handle(_ctx: InitxCtx, type: string, ...others: string[]) {
     if (!type) {
       log.error('Please enter a type, import or export')
-      process.exit(0)
+      return
     }
 
     switch (type) {
