@@ -2,16 +2,16 @@ import process from 'node:process'
 import path from 'node:path'
 import fs from 'fs-extra'
 
-import { type InitxCtx, InitxHandler } from '@initx-plugin/core'
+import { type InitxContext, InitxPlugin } from '@initx-plugin/core'
 import { c, gpgList, inquirer, log } from '@initx-plugin/utils'
 
-export default class GpgHandler extends InitxHandler {
+export default class GpgPlugin extends InitxPlugin {
   matchers = {
     matching: 'gpg',
     description: 'GPG key management'
   }
 
-  async handle(_ctx: InitxCtx, type: string, ...others: string[]) {
+  async handle(_ctx: InitxContext, type: string, ...others: string[]) {
     if (!type) {
       log.error('Please enter a type, import or export')
       return
