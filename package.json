@@ -31,8 +31,8 @@
     "prepare": "simple-git-hooks"
   },
   "dependencies": {
-    "@initx-plugin/core": "latest",
-    "@initx-plugin/utils": "latest",
+    "@initx-plugin/core": "^0.0.21",
+    "@initx-plugin/utils": "^0.0.21",
     "fs-extra": "^11.2.0"
   },
   "devDependencies": {
