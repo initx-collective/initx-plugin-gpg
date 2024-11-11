@@ -140,13 +140,17 @@ export default class GpgPlugin extends InitxPlugin {
 
     if (!hasDeleteType || deleteType === 'private') {
       await c('gpg', ['--delete-secret-keys', key], {
-        stdin: 'inherit'
+        nodeOptions: {
+          stdio: 'inherit'
+        }
       })
     }
 
     if (!hasDeleteType || deleteType === 'public') {
       await c('gpg', ['--delete-keys', key], {
-        stdin: 'inherit'
+        nodeOptions: {
+          stdio: 'inherit'
+        }
       })
     }
   }
