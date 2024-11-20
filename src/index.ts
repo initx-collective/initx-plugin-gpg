@@ -1,9 +1,10 @@
-import process from 'node:process'
 import path from 'node:path'
-import fs from 'fs-extra'
+import process from 'node:process'
 
 import { type InitxContext, InitxPlugin } from '@initx-plugin/core'
 import { c, gpgList, inquirer, log } from '@initx-plugin/utils'
+
+import fs from 'fs-extra'
 
 export default class GpgPlugin extends InitxPlugin {
   matchers = {
