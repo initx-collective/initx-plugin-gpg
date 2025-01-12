@@ -7,7 +7,7 @@ import { c, gpgList, inquirer, log } from '@initx-plugin/utils'
 import fs from 'fs-extra'
 
 export default class GpgPlugin extends InitxPlugin {
-  matchers = {
+  rules = {
     matching: 'gpg',
     description: 'GPG key management'
   }
