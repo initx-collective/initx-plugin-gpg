@@ -48,7 +48,7 @@ export default class GpgPlugin extends InitxPlugin {
 
         const [deleteType] = others
 
-        this.deleteKey(key, deleteType)
+        await this.deleteKey(key, deleteType)
         break
       }
     }
