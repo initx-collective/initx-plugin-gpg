@@ -1,15 +1,20 @@
 import path from 'node:path'
 import process from 'node:process'
 
-import { type InitxContext, InitxPlugin } from '@initx-plugin/core'
+import { type InitxContext, type InitxMatcherRules, InitxPlugin } from '@initx-plugin/core'
 import { c, gpgList, inquirer, log } from '@initx-plugin/utils'
 
 import fs from 'fs-extra'
 
 export default class GpgPlugin extends InitxPlugin {
-  rules = {
+  rules: InitxMatcherRules = {
     matching: 'gpg',
-    description: 'GPG key management'
+    description: 'GPG key management',
+    optional: [
+      'import',
+      'export',
+      'delete'
+    ]
   }
 
   async handle(_ctx: InitxContext, type: string, ...others: string[]) {
