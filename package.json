@@ -26,7 +26,7 @@
   "scripts": {
     "stub": "unbuild --stub",
     "build": "unbuild",
-    "lint": "eslint --cache --flag unstable_ts_config",
+    "lint": "eslint --cache",
     "release": "bumpp",
     "prepare": "simple-git-hooks"
   },
@@ -51,6 +51,6 @@
     "pre-commit": "pnpm lint-staged"
   },
   "lint-staged": {
-    "*": "eslint --cache --flag unstable_ts_config --fix"
+    "*": "eslint --cache --fix"
   }
 }
