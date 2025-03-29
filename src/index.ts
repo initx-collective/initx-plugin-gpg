@@ -1,7 +1,7 @@
+import type { InitxContext, InitxMatcherRules } from '@initx-plugin/core'
 import path from 'node:path'
 import process from 'node:process'
-
-import { type InitxContext, type InitxMatcherRules, InitxPlugin } from '@initx-plugin/core'
+import { InitxPlugin } from '@initx-plugin/core'
 import { c, gpgList, inquirer, log } from '@initx-plugin/utils'
 
 import fs from 'fs-extra'
